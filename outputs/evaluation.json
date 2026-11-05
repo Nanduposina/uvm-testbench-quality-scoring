@@ -1,0 +1,228 @@
+{
+  "dataset": "synthetic",
+  "runs": 550,
+  "metrics": 24,
+  "seed": 42,
+  "training_runs": 440,
+  "test_runs": 110,
+  "split": {
+    "method": "stratified run-level holdout",
+    "test_fraction": 0.2,
+    "seed": 43
+  },
+  "category_counts": {
+    "all": {
+      "low": 116,
+      "medium": 278,
+      "high": 156
+    },
+    "train": {
+      "low": 93,
+      "medium": 222,
+      "high": 125
+    },
+    "test": {
+      "low": 23,
+      "medium": 56,
+      "high": 31
+    }
+  },
+  "correct_predictions": 108,
+  "agreement_accuracy": 0.9818181818181818,
+  "agreement_accuracy_95pct_wilson": [
+    0.9361198354061879,
+    0.9949996451246721
+  ],
+  "balanced_accuracy": 0.978494623655914,
+  "macro_f1": 0.9830409356725146,
+  "majority_baseline": {
+    "training_majority_category": "medium",
+    "test_accuracy": 0.509090909090909
+  },
+  "target_agreement": 0.9,
+  "target_met": true,
+  "target_definition": "Held-out point accuracy >= target; not a confidence-bound claim.",
+  "categories": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference_category",
+    "columns": "predicted_category"
+  },
+  "confusion_matrix": [
+    [
+      23,
+      0,
+      0
+    ],
+    [
+      0,
+      56,
+      0
+    ],
+    [
+      0,
+      2,
+      29
+    ]
+  ],
+  "classification_report": {
+    "low": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 23.0
+    },
+    "medium": {
+      "precision": 0.9655172413793104,
+      "recall": 1.0,
+      "f1-score": 0.9824561403508771,
+      "support": 56.0
+    },
+    "high": {
+      "precision": 1.0,
+      "recall": 0.9354838709677419,
+      "f1-score": 0.9666666666666667,
+      "support": 31.0
+    },
+    "accuracy": 0.9818181818181818,
+    "macro avg": {
+      "precision": 0.9885057471264368,
+      "recall": 0.978494623655914,
+      "f1-score": 0.9830409356725146,
+      "support": 110.0
+    },
+    "weighted avg": {
+      "precision": 0.9824451410658307,
+      "recall": 0.9818181818181818,
+      "f1-score": 0.9816746411483254,
+      "support": 110.0
+    }
+  },
+  "model_parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 8,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 3,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 100,
+    "n_jobs": 1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "feature_columns": [
+    "stimulus_types",
+    "unique_addresses",
+    "payload_entropy",
+    "stimulus_reuse_ratio",
+    "corner_case_ratio",
+    "randomization_success",
+    "assertion_checks",
+    "assertion_pass_ratio",
+    "assertion_failures",
+    "coverage_initial",
+    "coverage_final",
+    "coverage_growth",
+    "coverage_bins_hit",
+    "warning_count",
+    "warning_bursts",
+    "error_count",
+    "idle_fraction",
+    "transaction_count",
+    "transactions_per_ms",
+    "component_pairs",
+    "component_messages",
+    "response_latency_us",
+    "protocol_retries",
+    "runtime_ms"
+  ],
+  "permutation_importance": {
+    "evaluation_split": "test",
+    "scoring": "accuracy",
+    "repeats": 10,
+    "std_definition": "Population standard deviation across permutations, not a confidence interval."
+  },
+  "reference_rubric": {
+    "terms": {
+      "coverage_growth": {
+        "weight": 0.28,
+        "scale": 0.7
+      },
+      "corner_case_ratio": {
+        "weight": 0.17,
+        "scale": 0.7
+      },
+      "idle_fraction": {
+        "weight": 0.17,
+        "scale": 1.0,
+        "invert": true
+      },
+      "randomization_success": {
+        "weight": 0.12,
+        "scale": 1.0
+      },
+      "component_pairs": {
+        "weight": 0.13,
+        "scale": 22.0
+      },
+      "assertion_checks": {
+        "weight": 0.13,
+        "scale": 850.0
+      }
+    },
+    "clip_each_term": [
+      0,
+      1
+    ],
+    "score_multiplier": 100,
+    "category_thresholds": {
+      "low": "score < 42",
+      "medium": "42 <= score < 69",
+      "high": "score >= 69"
+    }
+  },
+  "score_weights": {
+    "low": 0.0,
+    "medium": 50.0,
+    "high": 100.0
+  },
+  "coverage_total_bins": 400,
+  "synthetic_executions_sha256": "fd192ae8ce4d008927780603532526aea21e9763942bd8db23434a7c06750f76",
+  "environment": {
+    "python": "3.14.2",
+    "system": "Windows",
+    "dependencies": {
+      "numpy": "2.4.1",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.17.1",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.7.0",
+      "narwhals": "2.15.0",
+      "cloudpickle": "3.1.2",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2025.2",
+      "tzdata": "2025.3",
+      "six": "1.17.0",
+      "pytest": "9.1.1",
+      "iniconfig": "2.3.0",
+      "packaging": "25.0",
+      "pluggy": "1.6.0",
+      "pygments": "2.19.2",
+      "colorama": "0.4.6"
+    }
+  },
+  "limitations": "Synthetic run summaries, not RTL simulation output or expert assessments. Agreement measures recovery of the generated rubric on the same generator distribution. Features share a latent quality factor; correlated features can mask permutation importance. Importance is exploratory and is not used for model or feature selection. Confidence is uncalibrated maximum class probability. The expected score is ordinal, not a calibrated industrial quality measure or a category threshold rule. The Wilson interval describes held-out binomial sampling uncertainty only."
+}
